@@ -54,6 +54,10 @@ public class Timetable {
         TreeMap<TimeOfDay, List<TrainingSession>> sessionsForDay = timetable.get(dayOfWeek);
         List<TrainingSession> sessionsAtTime = sessionsForDay.get(timeOfDay);
 
+        if (sessionsAtTime == null) {
+            return new ArrayList<>();
+        }
+        
         return sessionsAtTime;
     }
 
