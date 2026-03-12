@@ -78,7 +78,7 @@ public class TimetableTest {
         assertEquals(1, timetable.getTrainingSessionsForDayAndTime(DayOfWeek.MONDAY,
                 new TimeOfDay(13, 0)).size());
         //Проверить, что за понедельник в 14:00 не вернулось занятий
-        assertNull(timetable.getTrainingSessionsForDayAndTime(DayOfWeek.MONDAY, new TimeOfDay(14, 0)));
+        assertTrue(timetable.getTrainingSessionsForDayAndTime(DayOfWeek.MONDAY, new TimeOfDay(14, 0)).isEmpty());
     }
 
     @Test
@@ -113,11 +113,11 @@ public class TimetableTest {
         Timetable timetable = new Timetable();
 
         List<TrainingSession> mondaySessions = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
-        assertTrue(mondaySessions.isEmpty(), "Для пустого расписания должен быть пустой список");
+        assertTrue(mondaySessions.isEmpty());
 
         List<TrainingSession> monday10Sessions = timetable.getTrainingSessionsForDayAndTime(
                 DayOfWeek.MONDAY, new TimeOfDay(10, 0));
-        assertNull(monday10Sessions, "Для пустого расписания должен быть null");
+        assertTrue(monday10Sessions.isEmpty());
     }
 
     @Test
